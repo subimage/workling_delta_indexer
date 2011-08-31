@@ -1,0 +1,25 @@
+h1. workling_delta_indexer
+
+Use workling to manage your delta indexing with "Pat Allan's":http://freelancing-gods.com/ "Thinking Sphinx":http://github.com/freelancing-god/thinking-sphinx/tree/master
+
+h2. How to Use
+
+*1. Install the plugin*
+
+  cd [yourapp]/vendor/plugins
+  git clone ruby script/plugin install git://github.com/subimage/workling_delta_indexer.git
+
+*2. Add a delta column to your indexed models & indexes*
+
+Adding delta columns "is described here":http://freelancing-god.github.com/ts/en/deltas.html
+
+*3. Use WorklingDelta::Indexer as your Delta handler**
+
+  define_index do
+    <index details>
+    set_property :delta => WorklingDelta::Indexer
+  end
+
+h2. Copyright
+
+Copyright (c) 2011 Dan Pickett & Subimage LLC. See LICENSE for details.
