@@ -4,27 +4,22 @@ Use workling to manage your delta indexing with <a href="http://freelancing-gods
 
 == How to Use
 
-Install the gem
+1 - Install the plugin
 
-  gem install dpickett-workling_delta_indexer
+  cd [yourapp]/vendor/plugins
+  git clone ruby script/plugin install git://github.com/subimage/workling_delta_indexer.git
 
-Add the gem to your list of required gems in config/environment.rb
+2 - Add a delta column to your indexed models & indexes
 
-  config.gem "dpickett-workling_delta_indexer", 
-    :lib => "workling_delta_indexer"
+Adding delta columns <a href="http://freelancing-god.github.com/ts/en/deltas.html">is described here</a>
 
-Use WorklingDelta::Indexer as your Delta handler
+3 - Use WorklingDelta::Indexer as your Delta handler
 
   define_index do
     <index details>
-
     set_property :delta => WorklingDelta::Indexer
   end
 
-== Documentation
-
-View the documentation at http://rdoc.info/projects/dpickett/workling_delta_indexer
-
 == Copyright
 
-Copyright (c) 2009 Dan Pickett. See LICENSE for details.
+Copyright (c) 2011 Dan Pickett & Subimage LLC. See LICENSE for details.

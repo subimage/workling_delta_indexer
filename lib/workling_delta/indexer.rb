@@ -9,11 +9,16 @@ module WorklingDelta
     # @param model the class of that triggered the delta
     # @param instance the instance that changed (if applicable)
     # @return [Boolean] should always return true
-    def do_index(model, instance = nil)
+    def index(model, instance = nil)
       doc_id = instance ? instance.sphinx_document_id : nil
-      WorklingDelta::Worker.async_index(:index_name => delta_index_name(model), :document_id => doc_id)
-    
-      true
+      Rails.logger.info "WorklingDelta - index"
+      Rails.logger.info "model: #{model} | doc_id: #{doc_id}"
+      WorklingDelta::Worker.asynch_index({
+        :index_name => model.delta_index_names, 
+        :document_id => doc_id
+      })
+      Rails.logger.info "WorklingDelta - enqueued async_index"
+      return true
     end
   end
 end
