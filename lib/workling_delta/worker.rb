@@ -10,6 +10,7 @@ class WorklingDelta::Worker < Workling::Base
   #@option options [Integer, nil] :document_id the sphinx document id of the object that needs to be flagged as deleted
   def index(options = {})
     Rails.logger.info "WorklingDelta::Worker - index"
+    Rails.logger.info "WorklingDelta::Worker OPTIONS: #{options.inspect}"
     ThinkingSphinx::Deltas::DeltaJob.new(options[:index_name]).perform
     Rails.logger.info "WorklingDelta::Worker - performed DeltaJob.new"
     if options[:document_id]
